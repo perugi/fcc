@@ -32,5 +32,24 @@ def grid_travel_memo(m, n, memo={}):
 # print(grid_travel(20, 20))
 
 print(grid_travel_memo(1, 3))
-print(grid_travel_memo(2, 3))
+print(grid_travel_memo(3, 3))
 print(grid_travel_memo(20, 20))
+
+
+def grid_travel_tab(m, n):
+    table = [[0 for _ in range(n + 1)] for _ in range(m + 1)]
+    table[1][1] = 1
+
+    for i, row in enumerate(table):
+        for j, _ in enumerate(row):
+            if i + 1 <= m:
+                table[i + 1][j] += table[i][j]
+            if j + 1 <= n:
+                table[i][j + 1] += table[i][j]
+
+    return table[m][n]
+
+
+print(grid_travel_tab(1, 3))
+print(grid_travel_tab(3, 3))
+print(grid_travel_tab(20, 20))

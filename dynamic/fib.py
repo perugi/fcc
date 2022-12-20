@@ -24,3 +24,23 @@ print(fib_memo(5))
 print(fib_memo(6))
 print(fib_memo(7))
 print(fib_memo(50))
+
+
+def fib_tab(n):
+    fibs = [0] * (n + 1)
+    fibs[1] = 1
+
+    for i, _ in enumerate(fibs):
+        try:
+            fibs[i + 1] += fibs[i]
+            fibs[i + 2] += fibs[i]
+        except IndexError:
+            pass
+
+    return fibs[n]
+
+
+print(fib_tab(5))
+# print(fib_tab(6))
+# print(fib_tab(7))
+# print(fib_tab(50))

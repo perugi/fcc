@@ -35,3 +35,21 @@ def can_sum_memo(target, numbers, memo={}):
 print(can_sum_memo(7, [5, 4, 3, 7]))
 print(can_sum_memo(6, [5, 4, 7]))
 print(can_sum_memo(300, [7, 14]))
+
+
+def can_sum_tab(target, numbers):
+    table = [False for _ in range(target + 1)]
+    table[0] = True
+
+    for i, _ in enumerate(table):
+        if table[i] == True:
+            for number in numbers:
+                if i + number < len(table):
+                    table[i + number] = True
+
+    return table[-1]
+
+
+print(can_sum_tab(7, [5, 4, 3, 7]))
+print(can_sum_tab(6, [5, 4, 7]))
+print(can_sum_tab(300, [7, 14]))
